@@ -1,4 +1,4 @@
-import { RangeManager } from '.index';
+import RangeManager from './index';
 
 describe('RangeManager', () => {
   it('should append a new row to the spreadsheet', () => {

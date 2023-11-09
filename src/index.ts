@@ -317,3 +317,5 @@ class RangeManager {
     return this;
   }
 }
+
+export default RangeManager;
