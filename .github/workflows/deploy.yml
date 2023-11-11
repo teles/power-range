@@ -21,12 +21,16 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-    - name: Clasp Token
-      uses: namaggarwal/clasp-token-action@v0.0.1
+    - name: Clasp Action              
+      uses: daikikatsuragawa/clasp-action@v1.1.0
       with:
-        client-id: "$CLASP_CLIENT_ID"
-        client-secret: "$CLASP_CLIENT_SECRET"
-        refresh-token: "$CLASP_REFRESH_TOKEN"
+        accessToken: ${{ secrets.ACCESS_TOKEN }}
+        idToken: ${{ secrets.ID_TOKEN }}
+        refreshToken: ${{ secrets.REFRESH_TOKEN }}
+        clientId: ${{ secrets.CLIENT_ID }}
+        clientSecret: ${{ secrets.CLIENT_SECRET }}
+        scriptId: ${{ secrets.SCRIPT_ID }}
+        command: 'push'
 
     - name: Deploy to Google Apps Script
       run: |
