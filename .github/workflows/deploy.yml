@@ -24,6 +24,7 @@ jobs:
     - name: Build project
       run: |
         npm run build
+        cp appsscript.json dist/
 
     - name: Push to Google App Script
       uses: daikikatsuragawa/clasp-action@v1.1.0
