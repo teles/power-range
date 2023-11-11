@@ -21,11 +21,15 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
+    - name: Clasp Token
+      uses: namaggarwal/clasp-token-action@v0.0.1
+      with:
+        client-id: "$CLASP_CLIENT_ID"
+        client-secret: "$CLASP_CLIENT_SECRET"
+        refresh-token: "$CLASP_REFRESH_TOKEN"
+
     - name: Deploy to Google Apps Script
       run: |
         npm install -g @google/clasp
         npm run build
-        cp appsscript.json dist/
-        echo "$CLASP_SECRET" | base64 --decode > sa-key.json
-        clasp login --creds sa-key.json
         clasp push        
