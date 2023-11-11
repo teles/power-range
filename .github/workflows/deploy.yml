@@ -21,7 +21,11 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-    - name: Clasp Action              
+    - name: Build project
+      run: |
+        npm run build
+
+    - name: Push to Google App Script
       uses: daikikatsuragawa/clasp-action@v1.1.0
       with:
         accessToken: ${{ secrets.ACCESS_TOKEN }}
@@ -30,11 +34,7 @@ jobs:
         clientId: ${{ secrets.CLIENT_ID }}
         clientSecret: ${{ secrets.CLIENT_SECRET }}
         scriptId: ${{ secrets.SCRIPT_ID }}
+        rootDir: 'dist'
         command: 'push'
 
-    - name: Deploy to Google Apps Script
-      run: |
-        cat .clasp.json
-        npm install -g @google/clasp
-        npm run build
-        clasp push        
+     
