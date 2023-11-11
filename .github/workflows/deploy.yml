@@ -30,6 +30,7 @@ jobs:
 
     - name: Deploy to Google Apps Script
       run: |
+        cat .clasp.json
         npm install -g @google/clasp
         npm run build
         clasp push        
