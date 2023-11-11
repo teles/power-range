@@ -25,5 +25,6 @@ jobs:
       run: |
         npm install -g @google/clasp
         npm run build
-        echo -e "$CLASP_EMAIL\n$CLASP_SECRET" | clasp login
-        clasp push
+        echo "$CLASP_SECRET" | base64 --decode > sa-key.json
+        clasp login --creds sa-key.json
+        clasp push        
